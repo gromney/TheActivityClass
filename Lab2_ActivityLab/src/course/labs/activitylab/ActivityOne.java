@@ -102,6 +102,7 @@ public class ActivityOne extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
+        mStart++;
 
 	}
 
@@ -112,9 +113,10 @@ public class ActivityOne extends Activity {
 		// Emit LogCat message
 		Log.i(TAG, "Entered the onResume() method");
 
-		// TODO:
+
 		// Update the appropriate count variable
 		// Update the user interface
+        mResume++;
 
 	}
 
@@ -144,6 +146,7 @@ public class ActivityOne extends Activity {
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
+        mRestart++;
 
 	}
 
@@ -160,6 +163,10 @@ public class ActivityOne extends Activity {
 		// TODO:
 		// Save state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
+        savedInstanceState.putInt("mCreate", mCreate);
+        savedInstanceState.putInt("mRestart", mRestart);
+        savedInstanceState.putInt("mStart", mStart);
+        savedInstanceState.putInt("mResume", mResume);
 
 	}
 
