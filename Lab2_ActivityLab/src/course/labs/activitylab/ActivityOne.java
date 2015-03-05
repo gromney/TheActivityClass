@@ -53,7 +53,7 @@ public class ActivityOne extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO:
+
 				// Launch Activity Two
 				// Hint: use Context's startActivity() method
 
@@ -71,9 +71,13 @@ public class ActivityOne extends Activity {
 		// Has previous state been saved?
 		if (savedInstanceState != null) {
 
-			// TODO:
+
 			// Restore value of counters from saved state
 			// Only need 4 lines of code, one for every count variable
+            mCreate = savedInstanceState.getInt("mCreate",0);
+            mRestart = savedInstanceState.getInt("mRestart",0);
+            mStart = savedInstanceState.getInt("mStart",0);
+            mResume = savedInstanceState.getInt("mResume",0);
 
 		}
 
