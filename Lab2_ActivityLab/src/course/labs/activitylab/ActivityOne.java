@@ -26,7 +26,7 @@ public class ActivityOne extends Activity {
 	// mCreate, mRestart, mStart and mResume
 	// to count calls to onCreate(), onRestart(), onStart() and
 	// onResume(). These variables should not be defined as static.
-    int mCreate, mRestart, mStart, mResume;
+    int mCreate, mRestart, mStart, mResume =0;
 
 	// You will need to increment these variables' values when their
 	// corresponding lifecycle methods get called.
@@ -74,19 +74,21 @@ public class ActivityOne extends Activity {
 
 			// Restore value of counters from saved state
 			// Only need 4 lines of code, one for every count variable
-            mCreate = savedInstanceState.getInt("mCreate",0);
-            mRestart = savedInstanceState.getInt("mRestart",0);
-            mStart = savedInstanceState.getInt("mStart",0);
-            mResume = savedInstanceState.getInt("mResume",0);
+            mCreate = savedInstanceState.getInt(CREATE_KEY);
+            mRestart = savedInstanceState.getInt(RESTART_KEY);
+            mStart = savedInstanceState.getInt(START_KEY);
+            mResume = savedInstanceState.getInt(RESUME_KEY);
 
 		}
 
 		// Emit LogCat message
 		Log.i(TAG, "Entered the onCreate() method");
 
-		// TODO:
+
 		// Update the appropriate count variable
+        mCreate ++;
 		// Update the user interface via the displayCounts() method
+        displayCounts();
 
 	}
 
@@ -99,10 +101,11 @@ public class ActivityOne extends Activity {
 		// Emit LogCat message
 		Log.i(TAG, "Entered the onStart() method");
 
-		// TODO:
 		// Update the appropriate count variable
-		// Update the user interface
-        mStart++;
+        mStart ++;
+        // Update the user interface
+        mTvStart.setText("onStart() calls: " + mStart);
+
 
 	}
 
@@ -115,8 +118,9 @@ public class ActivityOne extends Activity {
 
 
 		// Update the appropriate count variable
-		// Update the user interface
-        mResume++;
+        mResume ++;
+        // Update the user interface
+        mTvResume.setText("onResume() calls: " + mResume);
 
 	}
 
@@ -143,10 +147,10 @@ public class ActivityOne extends Activity {
 		// Emit LogCat message
 		Log.i(TAG, "Entered the onRestart() method");
 
-		// TODO:
-		// Update the appropriate count variable
-		// Update the user interface
-        mRestart++;
+        // Update the appropriate count variable
+        mRestart ++;
+        // Update the user interface
+        mTvRestart.setText("onRestart() calls: " + mRestart);
 
 	}
 
@@ -160,13 +164,15 @@ public class ActivityOne extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-		// TODO:
+
 		// Save state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
-        savedInstanceState.putInt("mCreate", mCreate);
-        savedInstanceState.putInt("mRestart", mRestart);
-        savedInstanceState.putInt("mStart", mStart);
-        savedInstanceState.putInt("mResume", mResume);
+        savedInstanceState.putInt(CREATE_KEY, mCreate);
+        savedInstanceState.putInt(RESTART_KEY, mRestart);
+        savedInstanceState.putInt(START_KEY, mStart);
+        savedInstanceState.putInt(RESUME_KEY, mResume);
+
+        super.onSaveInstanceState(savedInstanceState);
 
 	}
 
@@ -175,7 +181,6 @@ public class ActivityOne extends Activity {
 	// names
 	// specified above
 	public void displayCounts() {
-
 		mTvCreate.setText("onCreate() calls: " + mCreate);
 		mTvStart.setText("onStart() calls: " + mStart);
 		mTvResume.setText("onResume() calls: " + mResume);
