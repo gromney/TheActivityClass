@@ -40,7 +40,7 @@ public class ActivityOne extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_one);
 
-		
+
 		// Hint: Access the TextView by calling Activity's findViewById()
 		// textView1 = (TextView) findViewById(R.id.textView1);
         mTvCreate = (TextView) findViewById(R.id.create);
@@ -57,9 +57,10 @@ public class ActivityOne extends Activity {
 				// Launch Activity Two
 				// Hint: use Context's startActivity() method
 
+
 				// Create an intent stating which Activity you would like to
 				// start
-				Intent intent = null;
+				//Intent intent = new Intent(getActivity(), ActivityTwo.class);
 
 				// Launch the Activity using the intent
 
